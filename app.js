@@ -36,6 +36,11 @@ function verifyToken(req, res, next) {
   }
 }
 
+router.get("/", async (req,res) => {
+  return res.status(200).send('hello')
+
+})
+
 
 router.post("/users", async (req,res) => {
 
