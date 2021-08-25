@@ -4,6 +4,7 @@ const { Users, Entries } = require("./db")
 
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
+const PORT = process.env.PORT || 4000
 require('dotenv').config()
 
 const app = express()
@@ -13,8 +14,8 @@ const router = express.Router()
 // router.get('/users/:id/entries...) etc.
 app.use("/api", router)
 
-app.listen( 4000, () => {
-    console.log("listening at port", 4000)
+app.listen( PORT, () => {
+    console.log("listening at port", PORT)
 })
 
 function createToken(userId){
