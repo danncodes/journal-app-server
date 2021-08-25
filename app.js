@@ -1,4 +1,5 @@
 const express = require("express")
+const upload = require("express-fileupload")
 const { Users, Entries } = require("./db")
 
 const bcrypt = require("bcrypt")
@@ -7,6 +8,7 @@ require('dotenv').config()
 
 const app = express()
 app.use(express.json())
+app.use(upload())
 const router = express.Router()
 // router.get('/users/:id/entries...) etc.
 app.use("/api", router)
@@ -56,6 +58,25 @@ router.post("/users", async (req,res) => {
   })
 
   return res.sendStatus(201)
+})
+
+router.post("/image", async (req,res) => {
+
+  if(req.files){
+    const file = req.files.file
+    const filename = file.name
+    file.mv('./uploads/' + filename, (err) => {
+      if(err) {
+        res.send(err)
+      } else {
+        res.send("File Uploaded")
+      }
+
+    })
+  }
+
+//   res.sendFile(__dirname + '/uploads')
+// return res.sendStatus(201)
 })
 
 router.post("/signIn", async (req,res) => {
