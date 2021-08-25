@@ -60,25 +60,6 @@ router.post("/users", async (req,res) => {
   return res.sendStatus(201)
 })
 
-router.post("/image", async (req,res) => {
-
-  if(req.files){
-    const file = req.files.file
-    const filename = file.name
-    file.mv('./uploads/' + filename, (err) => {
-      if(err) {
-        res.send(err)
-      } else {
-        res.send("File Uploaded")
-      }
-
-    })
-  }
-
-//   res.sendFile(__dirname + '/uploads')
-// return res.sendStatus(201)
-})
-
 router.post("/signIn", async (req,res) => {
     const thisUser = await Users.findOne({
        where: {
