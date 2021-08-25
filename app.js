@@ -2,6 +2,7 @@ const express = require("express")
 const upload = require("express-fileupload")
 const { Users, Entries } = require("./db")
 
+const cors = require("cors")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
 const PORT = process.env.PORT || 4000
@@ -9,6 +10,9 @@ require('dotenv').config()
 
 const app = express()
 app.use(express.json())
+app.use(cors({
+  origin: "*"
+}))
 app.use(upload())
 const router = express.Router()
 // router.get('/users/:id/entries...) etc.
