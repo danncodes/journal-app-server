@@ -80,7 +80,7 @@ Users.init({
 Users.hasMany(Entries)
 Entries.belongsTo(Users)
 
-// sequelize.sync({force: true})
+sequelize.sync()
 
 
 module.exports = { sequelize, Users, Entries };
