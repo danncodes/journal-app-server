@@ -23,18 +23,6 @@ Users.init({
     password: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    firstname: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    lastname: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    phone: {
-        type: DataTypes.STRING,
-        allowNull: false
     }
   }, {
     sequelize,

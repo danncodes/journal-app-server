@@ -57,9 +57,6 @@ router.post("/users", async (req,res) => {
   const newUser = await Users.create({
       username: req.body.username, 
       password: await bcrypt.hash(req.body.password,10),
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      phone: req.body.phone
   })
 
   return res.sendStatus(201)
